@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 287 305" fill="none">
+  <!-- The crossed X from the Vexienne wordmark. Two strokes meeting at a single point. -->
+  <!-- Stroke 1: bottom-left to top-right -->
+  <path
+    class="x-stroke-1"
+    d="M0 305 L120 152 L175 0"
+    stroke="#D7F4EE"
+    stroke-width="52"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Stroke 2: top-left curving arc to bottom-right -->
+  <path
+    class="x-stroke-2"
+    d="M60 0 Q100 30 130 80 L120 152 L287 305"
+    stroke="#D7F4EE"
+    stroke-width="52"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg>

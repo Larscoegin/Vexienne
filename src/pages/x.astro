@@ -1,0 +1,134 @@
+---
+const currentYear = new Date().getFullYear();
+
+// Beta: YouTube embed. For launch, swap to Bunny Stream per ARCHITECTURE.md.
+const youtubeId = "CrDyGfdXrrQ";
+const videoEmbedSrc = `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="How to use Vexienne® Hair Active X™. Nightly use instructions and what to expect." />
+    <title>How to use Vexienne® Hair Active X™ | Vexienne®</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+  </head>
+
+  <body class="bg-white">
+
+    <!-- Minimal header: just the logo -->
+    <header class="px-6 md:px-12 lg:px-20 py-6 border-b border-text-navy/10">
+      <a href="/" aria-label="Vexienne home">
+        <img
+          src="/images/logos/logo-primary-deep-green.png"
+          alt="Vexienne®, Powered by Follicopeptide®"
+          class="h-12 md:h-14 w-auto"
+        />
+      </a>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 md:px-12 py-12 md:py-16">
+
+      <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-6">
+        Use instructions
+      </p>
+
+      <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-text-green font-normal leading-[1.15] tracking-tight mb-6">
+        How to use Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup>
+      </h1>
+
+      <p class="text-text-navy/85 text-lg leading-relaxed mb-10 max-w-2xl">
+        A short walk-through. Used once a night, applied directly to the scalp. A thin, even film is enough.
+      </p>
+
+      <!-- Video, responsive 16:9 -->
+      <div class="relative w-full mb-12" style="padding-bottom: 56.25%;">
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src={videoEmbedSrc}
+          title="How to use Vexienne® Hair Active X™"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Text steps as quick reference (back-up to the video) -->
+      <section class="border-t border-text-navy/15 pt-10">
+        <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-6">
+          The steps in short
+        </p>
+        <ol class="space-y-5 text-text-navy/85 leading-relaxed">
+          <li class="grid grid-cols-[28px_1fr] gap-4">
+            <span class="font-body text-text-navy/45 text-sm pt-0.5">01</span>
+            <p>Use once a night, in the evening, before bed. Apply earlier in the evening if you can, so the product has time to settle before any contact with the pillow.</p>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] gap-4">
+            <span class="font-body text-text-navy/45 text-sm pt-0.5">02</span>
+            <p>On fully dry hair, part the hair to expose the scalp in the area that looks thinner. The product goes onto the scalp, not into the hair.</p>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] gap-4">
+            <span class="font-body text-text-navy/45 text-sm pt-0.5">03</span>
+            <p>Dispense one to two pumps from the airless applicator. For longer hair, place the amount on a fingertip first. A thin, even film on the scalp is better than a thick layer. A little goes a long way.</p>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] gap-4">
+            <span class="font-body text-text-navy/45 text-sm pt-0.5">04</span>
+            <p>Apply directly to the areas that look thinner: the front hairline, a parting, or the crown. Massage in lightly. For multiple areas, work one section at a time to ensure even coverage.</p>
+          </li>
+          <li class="grid grid-cols-[28px_1fr] gap-4">
+            <span class="font-body text-text-navy/45 text-sm pt-0.5">05</span>
+            <p>Leave on overnight. Allow at least one hour before any contact with water. Wash out the next day as part of the normal hair routine. The formula dries down quickly and comfortably, so sleep and bedding are not affected.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- What to expect (honest timeline, drawn from manual §24) -->
+      <section class="border-t border-text-navy/15 mt-12 pt-10">
+        <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-4">
+          What to expect
+        </p>
+        <p class="text-text-navy/85 leading-relaxed mb-3">
+          Hair Active X<sup>&trade;</sup> is a routine, not a quick fix. Most users see little change in the first eight weeks while the habit forms. Around month four, early visible changes may begin to appear. Clearer differences may follow by month six with continued use.
+        </p>
+        <p class="text-text-navy/65 text-sm leading-relaxed">
+          The honest recommendation is to take a baseline photograph under consistent lighting today, and compare again at month four and month six.
+        </p>
+      </section>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-text-navy/10">
+        <a href="/" class="font-display text-text-green hover:text-deep-green transition-colors text-sm inline-flex items-center gap-2">
+          &larr; Back to Vexienne<sup>&reg;</sup>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Quiet footer -->
+    <footer class="bg-dark-navy py-10 mt-16" aria-label="Footer">
+      <div class="max-w-3xl mx-auto px-6 md:px-12 text-breathing-teal/55 text-xs leading-relaxed space-y-2">
+        <p>
+          Vexienne<sup>&reg;</sup> and Follicopeptide<sup>&reg;</sup> are registered trademarks of Coegin Pharma AB. Hair Active X<sup>&trade;</sup> is a trademark of Coegin Pharma AB.
+        </p>
+        <p>
+          Follicopeptide<sup>&reg;</sup> is a registered trademark of Coegin Pharma AB, used under licence. Responsible Person under EU Regulation 1223/2009: Coegin Pharma AB, Sweden.
+        </p>
+        <p>
+          Contact: <a href="mailto:marketing@coeginpharma.com" class="underline hover:text-breathing-teal transition-colors">marketing@coeginpharma.com</a> &nbsp;·&nbsp; &copy; {currentYear} Coegin Pharma AB.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ─── Vexienne Brand Palette ─── */
+@theme {
+  /* Primary */
+  --color-deep-green: #04342F;
+  --color-dark-navy: #17173B;
+
+  /* Vibrant secondaries */
+  --color-vex-purple: #6153A3;
+  --color-vex-blue: #3F77BC;
+
+  /* Accent & neutral */
+  --color-breathing-teal: #D7F4EE;
+  --color-warm-grey: #C4C5BF;
+
+  /* Monochrome text palette */
+  --color-text-green: #06695C;
+  --color-text-navy: #17173B;
+  --color-text-blue: #5C9AD3;
+  --color-text-purple-deep: #454885;
+  --color-text-purple-light: #7D77B7;
+
+  /* Fonts */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Familjen Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  /* 18px / 1.125rem body. Premium beauty/editorial norm.
+     Tailwind text-xs/sm/lg utilities still resolve from html root (16px). */
+  font-size: 1.125rem;
+  color: var(--color-text-navy);
+  /* Fraunces axes inherit from body. Axes Familjen Grotesk doesn't have
+     (opsz, SOFT, WONK) are silently ignored, so this is safe for body text. */
+  font-variation-settings: "opsz" 60, "SOFT" 25, "WONK" 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeInX {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 0.15;
+    transform: translateY(0);
+  }
+}
+
+.animate-crossed-x {
+  animation: fadeInX 1.8s ease-out 0.6s forwards;
+}
+
+/* ─── Accordion micro-interactions (details/summary) ─── */
+/* Label: color shift on hover, underline draws from left */
+.summary-label {
+  position: relative;
+  display: inline-block;
+}
+
+.summary-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-text-green);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+summary:hover .summary-label {
+  color: var(--color-text-green);
+}
+
+summary:hover .summary-label::after {
+  transform: scaleX(1);
+}
+
+/* Chevron: rotates on open, scales subtly on hover, composes both */
+details[open] > summary .summary-chevron {
+  transform: rotate(90deg);
+}
+
+summary:hover .summary-chevron {
+  transform: scale(1.08);
+}
+
+details[open] > summary:hover .summary-chevron {
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* Motion: only animate when the user hasn't requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .summary-label,
+  .summary-label::after,
+  .summary-chevron {
+    transition: color 300ms ease, transform 300ms ease;
+  }
+
+  details[open] > *:not(summary) {
+    animation: accordion-content-in 350ms ease-out;
+  }
+}
+
+@keyframes accordion-content-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

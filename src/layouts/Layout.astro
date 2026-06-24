@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  /** Current path, used to hide redundant nav link on the page we're already on. */
+  currentPath: string;
+  /** Body background class. Defaults to white; pass 'bg-deep-green' on the home
+      page so overscroll-at-top reveals brand green rather than a wrong-colour sliver. */
+  bodyClass?: string;
+  /** Whether the nav stays pinned to the top on scroll. False on the single-viewport
+      landing (so it scrolls away with the hero); true on inner pages with real content. */
+  navSticky?: boolean;
+}
+
+const { title, description, currentPath, bodyClass = 'bg-white', navSticky = true } = Astro.props;
+const currentYear = new Date().getFullYear();
+
+const isHome = currentPath === '/';
+const isHairActiveX = currentPath === '/hair-active-x';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+  </head>
+
+  <body class={bodyClass}>
+
+    <!-- Sticky nav. Two themes:
+         light = transparent on a dark hero (home page), uses teal logo
+         dark  = subtle white backdrop on a light page, uses deep-green logo -->
+    <nav
+      class:list={[
+        navSticky ? 'sticky top-0 z-50' : 'relative',
+        "py-5 md:py-6 lg:py-7 bg-deep-green"
+      ]}
+      aria-label="Main navigation"
+    >
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20 flex items-center justify-between gap-4">
+        <a href="/" aria-label="Vexienne home" class="shrink-0">
+          <img
+            src="/images/logos/logo-primary-teal.png"
+            alt="Vexienne®, Powered by Follicopeptide®"
+            class="h-9 sm:h-10 md:h-12 lg:h-14 w-auto"
+          />
+        </a>
+        {!isHairActiveX && (
+          <a
+            href="/hair-active-x"
+            class="font-body text-[11px] sm:text-xs md:text-sm tracking-[0.15em] uppercase transition-colors duration-200 shrink-0 text-breathing-teal/80 hover:text-breathing-teal"
+          >
+            Hair Active X<sup>&trade;</sup>
+          </a>
+        )}
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer (shared across all pages) -->
+    <footer class="bg-dark-navy py-5 md:py-6" aria-label="Footer">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+
+        <a href="/" aria-label="Vexienne home" class="inline-block mb-3">
+          <img
+            src="/images/logos/logo-primary-teal.png"
+            alt="Vexienne®, Powered by Follicopeptide®"
+            class="h-8 md:h-9 w-auto"
+          />
+        </a>
+
+        <div class="border-t border-breathing-teal/15 pt-3 max-w-3xl">
+
+          <p class="font-display text-breathing-teal text-sm md:text-base font-normal leading-snug tracking-tight mb-2">
+            Patented technology and formula.
+          </p>
+
+          <div class="text-breathing-teal/55 text-xs leading-relaxed space-y-1">
+            <p>
+              Vexienne<sup>&reg;</sup> and Follicopeptide<sup>&reg;</sup> are registered trademarks of Coegin Pharma AB. Hair Active X<sup>&trade;</sup> is a trademark of Coegin Pharma AB.
+            </p>
+            <p>
+              Contact: <a href="mailto:vexienne@coeginpharma.com" class="underline hover:text-breathing-teal transition-colors">vexienne@coeginpharma.com</a> &nbsp;&middot;&nbsp; &copy; {currentYear} Coegin Pharma AB. All rights reserved.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </footer>
+
+  </body>
+</html>

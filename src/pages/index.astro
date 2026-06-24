@@ -1,535 +1,62 @@
 ---
-const currentYear = new Date().getFullYear();
-
-// Phase 2 gate — see ARCHITECTURE.md. Email capture stays off until
-// /privacy and /cookies pages exist and a mailing service is wired up.
-const emailEnabled = import.meta.env.PUBLIC_EMAIL_ENABLED === 'true';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Vexienne® — a modern hair care brand built around patented Follicopeptide® peptide research. Discover Vexienne® Hair Active X™." />
-    <title>Vexienne® — Modern Hair Care, Powered by Follicopeptide®</title>
+<Layout
+  title="Vexienne® — Modern Hair Care, Powered by Follicopeptide®"
+  description="Vexienne® — a modern hair care brand series built around patented Follicopeptide® peptide research. Discover Vexienne® Hair Active X™."
+  currentPath="/"
+  bodyClass="bg-deep-green"
+  navSticky={false}
+>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-
-    <style is:global>
-      @import "../styles/global.css";
-    </style>
-  </head>
-
-  <body class="bg-white">
-
-    <!-- ═══════════════════════════════════════════
-         NAVIGATION (fixed, swaps on scroll)
-         ═══════════════════════════════════════════ -->
-    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12 lg:px-20 transition-all duration-300" aria-label="Main navigation">
-      <a href="#" aria-label="Vexienne home">
+  <!-- HERO. Single-viewport landing on /. Nav is in normal flow (non-sticky),
+       so hero sits below it. min-h subtracts approximate nav height per breakpoint
+       (logo h-X + py-Y) so nav + hero together fill exactly one viewport. -->
+  <section
+    id="hero"
+    class="relative min-h-[calc(100svh-4.75rem)] md:min-h-[calc(100svh-6rem)] lg:min-h-[calc(100svh-7rem)] flex items-center bg-deep-green overflow-hidden"
+    aria-label="Hero"
+  >
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <picture>
+        <source srcset="/images/mood/hair-parting.webp" type="image/webp" />
         <img
-          id="nav-logo-light"
-          src="/images/logos/logo-primary-teal.png"
-          alt="Vexienne® — Powered by Follicopeptide®"
-          class="h-14 md:h-16 w-auto"
-        />
-        <img
-          id="nav-logo-dark"
-          src="/images/logos/logo-primary-deep-green.png"
-          alt="Vexienne® — Powered by Follicopeptide®"
-          class="h-14 md:h-16 w-auto hidden"
-        />
-      </a>
-    </nav>
-
-    <!-- ═══════════════════════════════════════════
-         1. HERO
-         ═══════════════════════════════════════════ -->
-    <section
-      id="hero"
-      class="relative min-h-screen flex items-center bg-deep-green overflow-hidden"
-      aria-label="Hero"
-    >
-      <!-- Background image -->
-      <div class="absolute inset-0">
-        <picture>
-          <source srcset="/images/mood/hair-parting.webp" type="image/webp" />
-          <img
-            src="/images/mood/hair-parting.jpg"
-            alt=""
-            role="presentation"
-            class="w-full h-full object-cover opacity-30"
-          />
-        </picture>
-      </div>
-
-      <!-- Crossed X — fades in bottom-right -->
-      <div class="absolute bottom-0 right-0 z-[1] pointer-events-none overflow-hidden" aria-hidden="true">
-        <img
-          src="/images/logos/crossed-x-white.png"
+          src="/images/mood/hair-parting.jpg"
           alt=""
           role="presentation"
-          class="w-64 md:w-96 lg:w-[32rem] opacity-0 animate-crossed-x"
+          class="w-full h-full object-cover opacity-30"
         />
-      </div>
+      </picture>
+    </div>
 
-      <div class="relative z-10 w-full px-6 md:px-12 lg:px-20 py-32 max-w-4xl">
-        <h1 class="font-display text-5xl md:text-[4rem] lg:text-[5rem] font-normal text-breathing-teal leading-tight tracking-tight mb-6">
+    <!-- Crossed X — fades in bottom-right -->
+    <div class="absolute bottom-0 right-0 z-[1] pointer-events-none overflow-hidden" aria-hidden="true">
+      <img
+        src="/images/logos/crossed-x-white.png"
+        alt=""
+        role="presentation"
+        class="w-56 sm:w-72 md:w-96 lg:w-[32rem] opacity-0 animate-crossed-x"
+      />
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20 py-16 md:py-24">
+      <div class="max-w-4xl">
+        <h1 class="font-display text-[2.75rem] sm:text-5xl md:text-[4rem] lg:text-[5rem] font-normal text-breathing-teal leading-[1.05] tracking-tight mb-5 md:mb-6">
           Hair thinning is not a destiny.
         </h1>
-        <p class="text-4xl md:text-5xl text-breathing-teal/80 font-body max-w-2xl mb-10 leading-relaxed">
+        <p class="text-xl sm:text-2xl md:text-3xl text-breathing-teal/85 font-body max-w-2xl mb-8 md:mb-10 leading-snug">
           It can be reversed.
         </p>
         <a
-          href="#product"
-          class="inline-block border border-vex-purple bg-vex-purple text-white px-10 py-4 text-base tracking-wider uppercase font-display font-medium hover:bg-vex-purple/80 hover:border-vex-purple/80 transition-colors duration-300"
+          href="/hair-active-x"
+          class="inline-block border border-vex-purple bg-vex-purple text-white px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm tracking-[0.14em] uppercase font-body font-medium hover:bg-vex-purple/85 hover:border-vex-purple/85 transition-colors duration-300"
         >
-          Discover Hair Active X<sup>&trade;</sup> now
+          Start your journey
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════════════════════════════════════
-         2. THE PRODUCT
-         ═══════════════════════════════════════════ -->
-    <section id="product" class="py-20 md:py-28 bg-breathing-teal/40" aria-label="The product">
-      <div class="max-w-5xl mx-auto px-6 md:px-12">
-
-        <h2 class="font-display text-3xl md:text-4xl font-medium text-text-green mb-4">
-          Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup>
-        </h2>
-        <p class="text-text-navy/60 font-body text-sm tracking-wider uppercase mb-12">
-          The lead product in the series
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-16">
-          <!-- Product image -->
-          <div class="flex justify-center">
-            <img
-              src="/images/product/product-packshot.webp"
-              alt="Vexienne® Hair Active X precision airless applicator"
-              class="max-h-[500px] w-auto drop-shadow-lg"
-            />
-          </div>
-
-          <div class="text-text-navy/85 leading-relaxed border-t border-text-navy/15">
-
-            <details open class="py-5 border-b border-text-navy/15">
-              <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
-                <span class="summary-label font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase">About</span>
-                <span class="summary-chevron text-text-green text-base" aria-hidden="true">&#9656;</span>
-              </summary>
-              <p class="pt-5">
-                Meet Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup>. This is the leave-on gel serum we built for hair that has started to look thinner, designed to fit into the night you already have. You apply it directly to your scalp once an evening, before bed. At its heart is the patented Follicopeptide<sup>&reg;</sup>, the work of twenty years of peptide research and the reason this routine exists at all.
-              </p>
-            </details>
-
-            <details class="py-5 border-b border-text-navy/15">
-              <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
-                <span class="summary-label font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase">How you use it</span>
-                <span class="summary-chevron text-text-green text-base" aria-hidden="true">&#9656;</span>
-              </summary>
-              <p class="pt-5">
-                One to two pumps from the 15&nbsp;ml airless applicator is all you need. A thin, even film on the scalp is better than a thick one, and a little goes a long way. It dries down quickly, so you can go straight to bed. Whether you&rsquo;re working on the front hairline, along a parting, or on the crown, the applicator gives you precise placement and stays clean between uses.
-              </p>
-            </details>
-
-          </div>
-        </div>
-
-        <!-- Claims — editorial pull-quote with supporting facts -->
-        <div class="mt-4">
-          <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-8">
-            What Vexienne<sup>&reg;</sup> Hair Active X does
-          </p>
-
-          <!-- Lead claim, set as pull-quote (Claim 1) -->
-          <p class="font-display text-2xl md:text-3xl lg:text-[2.5rem] text-text-green font-normal leading-[1.2] tracking-tight max-w-3xl mb-12">
-            Improves the appearance of hair density in thinning areas.
-          </p>
-
-          <!-- Supporting claim (Claims 4, 5) -->
-          <div class="pt-10 border-t border-text-navy/15 max-w-3xl">
-            <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-3">
-              For everyone
-            </p>
-            <p class="text-text-navy/85 leading-relaxed">
-              Suitable for both men and women. Helps maintain the condition of the scalp and hair.
-            </p>
-          </div>
-
-          <!-- 7-out-of-10 caveat (Claim 3, in full verbatim) -->
-          <div class="mt-10 pt-6 border-t border-text-navy/10 max-w-3xl">
-            <p class="text-text-navy/65 text-sm leading-relaxed">
-              With consistent use, approximately 7 out of 10 users may expect visible improvement. Results vary between individuals.
-            </p>
-          </div>
-
-          <!-- Link to use-instructions page (/x) -->
-          <div class="mt-12 pt-6 border-t border-text-navy/10">
-            <a
-              href="/x"
-              class="font-display text-text-green hover:text-deep-green transition-colors text-base md:text-lg inline-flex items-center gap-2 group"
-            >
-              Watch the use instructions
-              <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         3. HOW IT WORKS
-         ═══════════════════════════════════════════ -->
-    <section id="how-it-works" class="py-20 md:py-28 bg-dark-navy" aria-label="How it works">
-      <div class="max-w-5xl mx-auto px-6 md:px-12">
-
-        <h2 class="font-display text-3xl md:text-4xl font-medium text-breathing-teal mb-4">
-          Months, not weeks
-        </h2>
-        <p class="text-breathing-teal/70 text-lg mb-16 max-w-2xl leading-relaxed">
-          Vexienne<sup>&reg;</sup> Hair Active X is a routine, not a quick fix, and the brand is honest about that.
-        </p>
-
-        <!-- Stepper (tablist) -->
-        <div role="tablist" aria-label="Timeline of expected results" class="flex flex-wrap gap-x-6 md:gap-x-10 gap-y-2 mb-10 border-b border-breathing-teal/15">
-          <button
-            role="tab"
-            aria-selected="true"
-            aria-controls="panel-m12"
-            id="tab-m12"
-            tabindex="0"
-            class="timeline-tab font-display text-sm tracking-wider uppercase pb-4 -mb-px text-breathing-teal/50 hover:text-breathing-teal aria-selected:text-breathing-teal border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
-          >
-            Month 1&ndash;2
-          </button>
-          <button
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-m34"
-            id="tab-m34"
-            tabindex="-1"
-            class="timeline-tab font-display text-sm tracking-wider uppercase pb-4 -mb-px text-breathing-teal/50 hover:text-breathing-teal aria-selected:text-breathing-teal border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
-          >
-            Month 3&ndash;4
-          </button>
-          <button
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-m46"
-            id="tab-m46"
-            tabindex="-1"
-            class="timeline-tab font-display text-sm tracking-wider uppercase pb-4 -mb-px text-breathing-teal/50 hover:text-breathing-teal aria-selected:text-breathing-teal border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
-          >
-            Month 4&ndash;6
-          </button>
-          <button
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-m6p"
-            id="tab-m6p"
-            tabindex="-1"
-            class="timeline-tab font-display text-sm tracking-wider uppercase pb-4 -mb-px text-breathing-teal/50 hover:text-breathing-teal aria-selected:text-breathing-teal border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
-          >
-            Month 6+
-          </button>
-        </div>
-
-        <!-- Panels (one visible at a time, all in DOM for SEO + a11y) -->
-        <div class="min-h-[220px] md:min-h-[200px]">
-          <div role="tabpanel" id="panel-m12" aria-labelledby="tab-m12" class="timeline-panel max-w-2xl">
-            <h3 class="font-display text-2xl md:text-3xl text-breathing-teal font-normal leading-tight tracking-tight mb-5">
-              The habit forms
-            </h3>
-            <p class="text-breathing-teal/75 leading-relaxed">
-              Most users see little change in this window. What matters is using the product every night and taking a baseline photograph under consistent lighting to compare against later.
-            </p>
-          </div>
-          <div role="tabpanel" id="panel-m34" aria-labelledby="tab-m34" class="timeline-panel max-w-2xl" hidden>
-            <h3 class="font-display text-2xl md:text-3xl text-breathing-teal font-normal leading-tight tracking-tight mb-5">
-              Early changes
-            </h3>
-            <p class="text-breathing-teal/75 leading-relaxed">
-              Early visible changes may begin to appear. Month four is the right moment to take a photograph under the same conditions as the baseline and compare them side by side.
-            </p>
-          </div>
-          <div role="tabpanel" id="panel-m46" aria-labelledby="tab-m46" class="timeline-panel max-w-2xl" hidden>
-            <h3 class="font-display text-2xl md:text-3xl text-breathing-teal font-normal leading-tight tracking-tight mb-5">
-              Visible differences
-            </h3>
-            <p class="text-breathing-teal/75 leading-relaxed">
-              With continued consistent use, clearer visible differences may begin to appear when comparing photographs to baseline. This is where consistent nightly use tends to show its full effect in the mirror.
-            </p>
-          </div>
-          <div role="tabpanel" id="panel-m6p" aria-labelledby="tab-m6p" class="timeline-panel max-w-2xl" hidden>
-            <h3 class="font-display text-2xl md:text-3xl text-breathing-teal font-normal leading-tight tracking-tight mb-5">
-              Maintain
-            </h3>
-            <p class="text-breathing-teal/75 leading-relaxed">
-              Continued nightly use helps maintain the cosmetic appearance of hair over time. The honest recommendation is to keep going.
-            </p>
-          </div>
-        </div>
-
-        <!-- Prev / Next nav -->
-        <div class="flex justify-between mt-10 pt-6 border-t border-breathing-teal/15">
-          <button
-            id="timeline-prev"
-            class="font-display text-sm tracking-wider uppercase text-breathing-teal/60 hover:text-breathing-teal disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-breathing-teal/60 transition-colors duration-200"
-            disabled
-          >
-            &larr; Previous
-          </button>
-          <button
-            id="timeline-next"
-            class="font-display text-sm tracking-wider uppercase text-breathing-teal/60 hover:text-breathing-teal disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-breathing-teal/60 transition-colors duration-200"
-          >
-            Next &rarr;
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         4. STAY IN THE LOOP (email signup) — Phase 2
-         Gated off until /privacy + /cookies + mailing service exist.
-         ═══════════════════════════════════════════ -->
-    {emailEnabled && (
-    <section id="signup" class="py-20 md:py-28 bg-breathing-teal/40" aria-label="Sign up for updates">
-      <div class="max-w-xl mx-auto px-6 md:px-12 text-center">
-
-        <h2 class="font-display text-3xl md:text-4xl font-medium text-text-green mb-6">
-          Stay in the loop
-        </h2>
-        <p class="text-text-navy/70 text-lg mb-10 leading-relaxed">
-          Vexienne<sup>&reg;</sup> Hair Active X is on its way. Leave your email and we will let you know when it is available and share the occasional update from the brand.
-        </p>
-
-        <!-- Signup form (Formspree) — GDPR compliant -->
-        <form
-          id="signup-form"
-          action="https://formspree.io/f/xyzformid"
-          method="POST"
-          class="max-w-md mx-auto"
-        >
-          <div class="flex flex-col sm:flex-row gap-3 mb-4">
-            <label for="signup-email" class="sr-only">Email address</label>
-            <input
-              id="signup-email"
-              type="email"
-              name="email"
-              required
-              placeholder="Your email address"
-              autocomplete="email"
-              class="flex-1 px-5 py-3 rounded-lg border border-deep-green/20 bg-white text-text-navy placeholder:text-text-navy/40 font-body focus:outline-none focus:ring-2 focus:ring-deep-green/40 transition"
-            />
-            <button
-              type="submit"
-              class="px-8 py-3 rounded-lg bg-deep-green text-breathing-teal font-display font-medium text-sm tracking-wider uppercase hover:bg-deep-green/90 transition-colors duration-300 whitespace-nowrap"
-            >
-              Keep me posted
-            </button>
-          </div>
-
-          <!-- GDPR consent checkbox -->
-          <div class="flex items-start gap-3 text-left mb-2">
-            <input
-              id="gdpr-consent"
-              type="checkbox"
-              name="gdpr_consent"
-              required
-              class="mt-1 h-4 w-4 shrink-0 accent-deep-green cursor-pointer"
-            />
-            <label for="gdpr-consent" class="text-text-navy/70 text-xs leading-relaxed cursor-pointer">
-              I consent to Coegin Pharma AB storing my email address for the purpose of sending product availability updates and occasional brand news. I understand I can withdraw my consent at any time by contacting <a href="mailto:consent@coeginpharma.com" class="underline hover:text-text-navy transition-colors">consent@coeginpharma.com</a> or using the unsubscribe link in any email.
-            </label>
-          </div>
-
-          <!-- Consent validation message -->
-          <p id="consent-error" class="hidden text-left text-xs text-red-600 ml-7 mb-2">
-            Please tick the consent box to continue.
-          </p>
-        </form>
-
-        <!-- Success message (hidden by default) -->
-        <div id="signup-success" class="hidden">
-          <p class="font-display text-xl text-deep-green font-medium mb-2">Thank you.</p>
-          <p class="text-text-navy/70 leading-relaxed">We will be in touch when there is something worth sharing.</p>
-        </div>
-
-        <!-- Error message (hidden by default) -->
-        <p id="signup-error" class="hidden mt-4 text-sm text-red-600">
-          Something went wrong. Please try again or write to consent@coeginpharma.com.
-        </p>
-
-        <!-- GDPR data-controller notice -->
-        <div class="mt-8 text-text-navy/40 text-xs leading-relaxed space-y-1">
-          <p>Data controller: Coegin Pharma AB, Sweden. Your email is stored solely for the stated purpose and will not be shared with third parties.</p>
-          <p>You have the right to access, rectify, or request deletion of your data at any time by emailing <a href="mailto:consent@coeginpharma.com" class="underline hover:text-text-navy transition-colors">consent@coeginpharma.com</a>.</p>
-        </div>
-
-      </div>
-    </section>
-    )}
-
-    <!-- ═══════════════════════════════════════════
-         4. FOOTER
-         ═══════════════════════════════════════════ -->
-    <footer class="bg-dark-navy py-16 md:py-20" aria-label="Footer">
-      <div class="max-w-5xl mx-auto px-6 md:px-12">
-
-        <!-- Logo -->
-        <div class="mb-12">
-          <img
-            src="/images/logos/logo-primary-teal.png"
-            alt="Vexienne® — Powered by Follicopeptide®"
-            class="h-10 md:h-12 w-auto"
-          />
-        </div>
-
-        <!-- Legal text -->
-        <div class="space-y-4 text-breathing-teal/50 text-sm leading-relaxed max-w-2xl">
-          <p>
-            Vexienne<sup>&reg;</sup> and Follicopeptide<sup>&reg;</sup> are registered trademarks of Coegin Pharma AB. Hair Active X<sup>&trade;</sup> is a trademark of Coegin Pharma AB.
-          </p>
-          <p>
-            Follicopeptide<sup>&reg;</sup> is a registered trademark of Coegin Pharma AB, used under licence.
-          </p>
-          <p>
-            Responsible Person under EU Regulation 1223/2009: Coegin Pharma AB, Sweden.
-          </p>
-          <p>
-            Contact: <a href="mailto:marketing@coeginpharma.com" class="underline hover:text-breathing-teal transition-colors">marketing@coeginpharma.com</a>
-          </p>
-          <p class="pt-4 border-t border-breathing-teal/10">
-            &copy; {currentYear} Coegin Pharma AB. All rights reserved.
-          </p>
-        </div>
-
-      </div>
-    </footer>
-
-    <!-- Nav scroll behaviour -->
-    <script>
-      const nav = document.getElementById('main-nav');
-      const logoLight = document.getElementById('nav-logo-light');
-      const logoDark = document.getElementById('nav-logo-dark');
-      const hero = document.getElementById('hero');
-
-      function updateNav() {
-        const heroBottom = hero ? hero.offsetHeight : 0;
-        const scrolled = window.scrollY > heroBottom - 80;
-
-        if (scrolled) {
-          nav?.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
-          logoLight?.classList.add('hidden');
-          logoDark?.classList.remove('hidden');
-        } else {
-          nav?.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
-          logoLight?.classList.remove('hidden');
-          logoDark?.classList.add('hidden');
-        }
-      }
-
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
-    </script>
-
-    <!-- Timeline carousel (tablist pattern with prev/next + keyboard nav) -->
-    <script>
-      (() => {
-        const root = document.getElementById('how-it-works');
-        if (!root) return;
-        const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-        const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
-        const prevBtn = document.getElementById('timeline-prev') as HTMLButtonElement | null;
-        const nextBtn = document.getElementById('timeline-next') as HTMLButtonElement | null;
-        let currentIndex = 0;
-
-        function show(index: number) {
-          if (index < 0 || index >= tabs.length) return;
-          tabs.forEach((tab, i) => {
-            tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
-            tab.setAttribute('tabindex', i === index ? '0' : '-1');
-          });
-          panels.forEach((panel, i) => {
-            if (i === index) panel.removeAttribute('hidden');
-            else panel.setAttribute('hidden', '');
-          });
-          if (prevBtn) prevBtn.disabled = index === 0;
-          if (nextBtn) nextBtn.disabled = index === tabs.length - 1;
-          currentIndex = index;
-        }
-
-        tabs.forEach((tab, i) => {
-          tab.addEventListener('click', () => show(i));
-          tab.addEventListener('keydown', (e) => {
-            let next: number | null = null;
-            if (e.key === 'ArrowRight') next = Math.min(currentIndex + 1, tabs.length - 1);
-            else if (e.key === 'ArrowLeft') next = Math.max(currentIndex - 1, 0);
-            else if (e.key === 'Home') next = 0;
-            else if (e.key === 'End') next = tabs.length - 1;
-            if (next !== null) {
-              e.preventDefault();
-              show(next);
-              tabs[currentIndex].focus();
-            }
-          });
-        });
-
-        prevBtn?.addEventListener('click', () => show(currentIndex - 1));
-        nextBtn?.addEventListener('click', () => show(currentIndex + 1));
-
-        // Ensure initial state matches HTML defaults (defensive)
-        show(0);
-      })();
-    </script>
-
-    {emailEnabled && (
-    <script>
-      // Signup form submission (GDPR-aware)
-      const form = document.getElementById('signup-form') as HTMLFormElement | null;
-      const successEl = document.getElementById('signup-success');
-      const errorEl = document.getElementById('signup-error');
-      const consentBox = document.getElementById('gdpr-consent') as HTMLInputElement | null;
-      const consentError = document.getElementById('consent-error');
-
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        errorEl?.classList.add('hidden');
-        consentError?.classList.add('hidden');
-
-        // Validate GDPR consent
-        if (!consentBox?.checked) {
-          consentError?.classList.remove('hidden');
-          return;
-        }
-
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' },
-          });
-
-          if (res.ok) {
-            form.classList.add('hidden');
-            successEl?.classList.remove('hidden');
-          } else {
-            errorEl?.classList.remove('hidden');
-          }
-        } catch {
-          errorEl?.classList.remove('hidden');
-        }
-      });
-    </script>
-    )}
-  </body>
-</html>
+</Layout>

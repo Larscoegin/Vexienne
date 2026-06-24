@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Vexienne® Hair Active X™ | Vexienne®"
+  description="Vexienne® Hair Active X™ — a patented leave-on gel serum that improves the appearance of hair density in thinning areas. Built around Follicopeptide®."
+  currentPath="/hair-active-x"
+>
+
+  <!-- Product hero / intro -->
+  <section
+    id="product"
+    class="bg-breathing-teal/40 pt-14 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24"
+    aria-label="The product"
+  >
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-normal text-text-green leading-[1.1] tracking-tight mb-3 md:mb-4">
+        Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup>
+      </h1>
+      <p class="font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase mb-10 md:mb-14">
+        The lead product in the series
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-center mb-12 md:mb-16">
+
+        <!-- Product image -->
+        <div class="flex justify-center order-1">
+          <img
+            src="/images/product/product-packshot.webp"
+            alt="Vexienne® Hair Active X™ precision airless applicator"
+            class="max-h-[360px] sm:max-h-[440px] md:max-h-[500px] w-auto drop-shadow-lg"
+          />
+        </div>
+
+        <!-- Description: accordion of About / How you use it -->
+        <div class="text-text-navy/85 leading-relaxed border-t border-text-navy/15 order-2">
+
+          <details open class="py-5 border-b border-text-navy/15">
+            <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+              <span class="summary-label font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase">About</span>
+              <span class="summary-chevron text-text-green text-base" aria-hidden="true">&#9656;</span>
+            </summary>
+            <p class="pt-5">
+              Meet Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup>. This is the leave-on gel serum we built for hair that has started to look thinner, designed to fit into the night you already have. You apply it directly to your scalp once an evening, before bed. At its heart is the patented Follicopeptide<sup>&reg;</sup>, the work of twenty years of peptide research and the reason this routine exists at all.
+            </p>
+          </details>
+
+          <details class="py-5 border-b border-text-navy/15">
+            <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+              <span class="summary-label font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase">How you use it</span>
+              <span class="summary-chevron text-text-green text-base" aria-hidden="true">&#9656;</span>
+            </summary>
+            <p class="pt-5">
+              One to two pumps from the 15&nbsp;ml airless applicator is all you need. A thin, even film on the scalp is better than a thick one, and a little goes a long way. It dries down quickly, so you can go straight to bed. Whether you&rsquo;re working on the front hairline, along a parting, or on the crown, the applicator gives you precise placement and stays clean between uses.
+            </p>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- Claims — editorial pull-quote with supporting fact -->
+      <div class="mt-2 md:mt-4">
+        <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-6 md:mb-8">
+          What Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup> does
+        </p>
+
+        <p class="font-display text-2xl sm:text-3xl md:text-[2.25rem] lg:text-[2.5rem] text-text-green font-normal leading-[1.2] tracking-tight max-w-3xl mb-10 md:mb-12">
+          Improves the appearance of hair density in thinning areas.
+        </p>
+
+        <div class="pt-8 md:pt-10 border-t border-text-navy/15 max-w-3xl">
+          <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-3">
+            For everyone
+          </p>
+          <p class="text-text-navy/85 leading-relaxed">
+            Suitable for both men and women. Helps maintain the condition of the scalp and hair.
+          </p>
+        </div>
+
+        <div class="mt-8 md:mt-10 pt-6 border-t border-text-navy/10 max-w-3xl">
+          <p class="text-text-navy/65 text-sm leading-relaxed">
+            With consistent use, approximately 7 out of 10 users may expect visible improvement. Results vary between individuals.
+          </p>
+        </div>
+
+        <!-- Link to use-instructions page (/x) -->
+        <div class="mt-10 md:mt-12 pt-6 border-t border-text-navy/10">
+          <a
+            href="/x"
+            class="font-display text-text-green hover:text-deep-green transition-colors text-base md:text-lg inline-flex items-center gap-2 group"
+          >
+            Watch the use instructions
+            <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Timeline / "Months, not weeks" carousel. Same breathing-teal palette to eliminate
+       the cross-section color jump that was painful on mobile. Visual interest comes
+       from typography + the stepper, not background color contrast. -->
+  <section
+    id="how-it-works"
+    class="bg-breathing-teal/40 pt-12 pb-20 md:pt-16 md:pb-28"
+    aria-label="How it works over time"
+  >
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+
+      <div class="pt-12 md:pt-16 border-t border-text-navy/15">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-normal text-text-green leading-[1.1] tracking-tight mb-3 md:mb-4">
+          Months, not weeks
+        </h2>
+        <p class="text-text-navy/70 text-base md:text-lg mb-10 md:mb-12 max-w-2xl leading-relaxed">
+          Vexienne<sup>&reg;</sup> Hair Active X<sup>&trade;</sup> is a routine, not a quick fix, and the brand is honest about that.
+        </p>
+
+        <!-- Stepper (tablist) -->
+        <div role="tablist" aria-label="Timeline of expected results" class="flex flex-wrap gap-x-5 sm:gap-x-8 md:gap-x-10 gap-y-2 mb-8 md:mb-10 border-b border-text-navy/15">
+          <button
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-m12"
+            id="tab-m12"
+            tabindex="0"
+            class="timeline-tab font-body text-xs sm:text-sm tracking-wider uppercase pb-3 md:pb-4 -mb-px text-text-navy/50 hover:text-text-green aria-selected:text-text-green border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
+          >
+            Month 1&ndash;2
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-m34"
+            id="tab-m34"
+            tabindex="-1"
+            class="timeline-tab font-body text-xs sm:text-sm tracking-wider uppercase pb-3 md:pb-4 -mb-px text-text-navy/50 hover:text-text-green aria-selected:text-text-green border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
+          >
+            Month 3&ndash;4
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-m46"
+            id="tab-m46"
+            tabindex="-1"
+            class="timeline-tab font-body text-xs sm:text-sm tracking-wider uppercase pb-3 md:pb-4 -mb-px text-text-navy/50 hover:text-text-green aria-selected:text-text-green border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
+          >
+            Month 4&ndash;6
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-m6p"
+            id="tab-m6p"
+            tabindex="-1"
+            class="timeline-tab font-body text-xs sm:text-sm tracking-wider uppercase pb-3 md:pb-4 -mb-px text-text-navy/50 hover:text-text-green aria-selected:text-text-green border-b-2 border-transparent aria-selected:border-vex-purple transition-colors duration-200"
+          >
+            Month 6+
+          </button>
+        </div>
+
+        <!-- Panels -->
+        <div class="min-h-[200px] md:min-h-[180px]">
+          <div role="tabpanel" id="panel-m12" aria-labelledby="tab-m12" class="timeline-panel max-w-2xl">
+            <h3 class="font-display text-xl sm:text-2xl md:text-3xl text-text-green font-normal leading-tight tracking-tight mb-4 md:mb-5">
+              The habit forms
+            </h3>
+            <p class="text-text-navy/85 leading-relaxed">
+              Most users see little change in this window. What matters is using the product every night and taking a baseline photograph under consistent lighting to compare against later.
+            </p>
+          </div>
+          <div role="tabpanel" id="panel-m34" aria-labelledby="tab-m34" class="timeline-panel max-w-2xl" hidden>
+            <h3 class="font-display text-xl sm:text-2xl md:text-3xl text-text-green font-normal leading-tight tracking-tight mb-4 md:mb-5">
+              Early changes
+            </h3>
+            <p class="text-text-navy/85 leading-relaxed">
+              Early visible changes may begin to appear. Month four is the right moment to take a photograph under the same conditions as the baseline and compare them side by side.
+            </p>
+          </div>
+          <div role="tabpanel" id="panel-m46" aria-labelledby="tab-m46" class="timeline-panel max-w-2xl" hidden>
+            <h3 class="font-display text-xl sm:text-2xl md:text-3xl text-text-green font-normal leading-tight tracking-tight mb-4 md:mb-5">
+              Visible differences
+            </h3>
+            <p class="text-text-navy/85 leading-relaxed">
+              With continued consistent use, clearer visible differences may begin to appear when comparing photographs to baseline. This is where consistent nightly use tends to show its full effect in the mirror.
+            </p>
+          </div>
+          <div role="tabpanel" id="panel-m6p" aria-labelledby="tab-m6p" class="timeline-panel max-w-2xl" hidden>
+            <h3 class="font-display text-xl sm:text-2xl md:text-3xl text-text-green font-normal leading-tight tracking-tight mb-4 md:mb-5">
+              Maintain
+            </h3>
+            <p class="text-text-navy/85 leading-relaxed">
+              Continued nightly use helps maintain the cosmetic appearance of hair over time. The honest recommendation is to keep going.
+            </p>
+          </div>
+        </div>
+
+        <!-- Prev / Next nav -->
+        <div class="flex justify-between mt-8 md:mt-10 pt-6 border-t border-text-navy/15">
+          <button
+            id="timeline-prev"
+            class="font-body text-xs sm:text-sm tracking-wider uppercase text-text-navy/55 hover:text-text-green disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-text-navy/55 transition-colors duration-200"
+            disabled
+          >
+            &larr; Previous
+          </button>
+          <button
+            id="timeline-next"
+            class="font-body text-xs sm:text-sm tracking-wider uppercase text-text-navy/55 hover:text-text-green disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:text-text-navy/55 transition-colors duration-200"
+          >
+            Next &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Timeline carousel (tablist pattern with prev/next + keyboard nav) -->
+  <script>
+    (() => {
+      const root = document.getElementById('how-it-works');
+      if (!root) return;
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+      const prevBtn = document.getElementById('timeline-prev') as HTMLButtonElement | null;
+      const nextBtn = document.getElementById('timeline-next') as HTMLButtonElement | null;
+      let currentIndex = 0;
+
+      function show(index: number) {
+        if (index < 0 || index >= tabs.length) return;
+        tabs.forEach((tab, i) => {
+          tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+          tab.setAttribute('tabindex', i === index ? '0' : '-1');
+        });
+        panels.forEach((panel, i) => {
+          if (i === index) panel.removeAttribute('hidden');
+          else panel.setAttribute('hidden', '');
+        });
+        if (prevBtn) prevBtn.disabled = index === 0;
+        if (nextBtn) nextBtn.disabled = index === tabs.length - 1;
+        currentIndex = index;
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => show(i));
+        tab.addEventListener('keydown', (e) => {
+          let next: number | null = null;
+          if (e.key === 'ArrowRight') next = Math.min(currentIndex + 1, tabs.length - 1);
+          else if (e.key === 'ArrowLeft') next = Math.max(currentIndex - 1, 0);
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = tabs.length - 1;
+          if (next !== null) {
+            e.preventDefault();
+            show(next);
+            tabs[currentIndex].focus();
+          }
+        });
+      });
+
+      prevBtn?.addEventListener('click', () => show(currentIndex - 1));
+      nextBtn?.addEventListener('click', () => show(currentIndex + 1));
+
+      // Defensive: ensure initial state matches HTML defaults
+      show(0);
+    })();
+  </script>
+
+</Layout>

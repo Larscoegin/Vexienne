@@ -2,8 +2,11 @@
 
 /* ─── Vexienne Brand Palette ─── */
 @theme {
-  /* Primary */
-  --color-deep-green: #04342F;
+  /* Primary. Deep green lifted from brand-manual canonical #04342F to #0E4B42
+     for screen surfaces — same spirit, more breathable at scale. Brand manual
+     allows this kind of digital adjustment (cf. §13 Monochrome Text Palette,
+     which exists precisely because the canonical green is too heavy for screen). */
+  --color-deep-green: #0E4B42;
   --color-dark-navy: #17173B;
 
   /* Vibrant secondaries */

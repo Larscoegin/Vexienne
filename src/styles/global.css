@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(2rem);
   }
   to {
-    opacity: 0.15;
+    opacity: 0.25;
     transform: translateY(0);
   }
 }

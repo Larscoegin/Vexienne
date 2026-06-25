@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Beta: YouTube embed. For launch, swap to Bunny Stream per ARCHITECTURE.md.
-// Bunny library 690235 exists, awaiting MP4 upload before swap.
-const youtubeId = "CrDyGfdXrrQ";
-const videoEmbedSrc = `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`;
+// Use-instructions video, hosted on Bunny Stream (EU Stockholm region, cookieless playback).
+// Player branding/colors configured in the Bunny dashboard (library settings).
+const bunnyLibraryId = "690235";
+const bunnyVideoId = "125d7877-9cad-47d1-90d6-4f8b10287719";
+const videoEmbedSrc = `https://iframe.mediadelivery.net/embed/${bunnyLibraryId}/${bunnyVideoId}?autoplay=false&loop=false&muted=false&preload=true&responsive=true`;
 ---
 
 <Layout
@@ -34,10 +35,9 @@ const videoEmbedSrc = `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0
         class="absolute top-0 left-0 w-full h-full"
         src={videoEmbedSrc}
         title="How to use Vexienne® Hair Active X™"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
         loading="lazy"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+        allowfullscreen
       ></iframe>
     </div>
 

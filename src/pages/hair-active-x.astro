@@ -215,6 +215,28 @@ import Layout from '../layouts/Layout.astro';
             Next &rarr;
           </button>
         </div>
+
+        <!-- Product safety / Responsible Person (collapsible) -->
+        <details class="max-w-2xl py-5 border-b border-text-navy/15">
+          <summary class="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+            <span class="summary-label font-body text-text-navy/60 text-xs tracking-[0.18em] uppercase">Product safety</span>
+            <span class="summary-chevron text-text-green text-base" aria-hidden="true">&#9656;</span>
+          </summary>
+          <div class="pt-5 text-text-navy/85 leading-relaxed">
+            <p class="font-body text-text-navy/55 text-xs tracking-[0.18em] uppercase mb-3">
+              Responsible Person under EU Regulation 1223/2009
+            </p>
+            <address class="not-italic mb-4">
+              Coegin Pharma AB<br />
+              Scheelev&auml;gen 2<br />
+              223 63 Lund<br />
+              Sweden
+            </address>
+            <p>
+              For product safety enquiries: <a href="mailto:cosmetovigilance@coeginpharma.com" class="underline hover:text-text-green transition-colors">cosmetovigilance@coeginpharma.com</a>
+            </p>
+          </div>
+        </details>
       </div>
 
     </div>
